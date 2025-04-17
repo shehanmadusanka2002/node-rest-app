@@ -14,9 +14,8 @@ app.use('/api/users', router);
 
 
 // create mongodb connection
-mongoose.connect("mongodb+srv://shehan:shehan123@cluster0.jlmcfo9.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
+mongoose.connect("mongodb+srv://shehan:shehan123@cluster0.tksvdin.mongodb.net/mydb?retryWrites=true&w=majority&appName=Cluster0", {
+    //
 }).then(() => {
     console.log("MongoDB connected successfully!");
 }).catch((err) => {
