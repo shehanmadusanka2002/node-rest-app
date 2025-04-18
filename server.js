@@ -2,6 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const router = require('./routers/user.js');
+const dotenv = require('dotenv');
+require('dotenv').config();
+
 
 
 const app = express();
@@ -14,7 +17,7 @@ app.use('/api/users', router);
 
 
 // create mongodb connection
-mongoose.connect("mongodb+srv://shehan:shehan123@cluster0.tksvdin.mongodb.net/mydb?retryWrites=true&w=majority&appName=Cluster0", {
+mongoose.connect(process.env.Mongodb_Url, {
     //
 }).then(() => {
     console.log("MongoDB connected successfully!");
