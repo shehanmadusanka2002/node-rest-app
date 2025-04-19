@@ -25,6 +25,21 @@ function UserManagement() {
     alert("User added successfully!");
   };
 
+  const handleDelete = async (id) => {
+    const confirm = window.confirm("Are you sure you want to delete this user?");
+    if (!confirm) return;
+
+    try {
+      await axios.delete(`http://localhost:3000/api/users/${id}`);
+      fetchUsers();
+      alert("User deleted successfully!");
+    } catch (err) {
+      console.error(err);
+      alert("Failed to delete user");
+    }
+  };
+ 
+
   return (
     <div className="container">
       <h2>Add User</h2>
@@ -55,6 +70,7 @@ function UserManagement() {
         {users.map((user) => (
           <li key={user._id}>
             {user.name} – {user.email}
+            <button className="delete-button" onClick={() => handleDelete(user._id)}>Delete</button>
           </li>
         ))}
       </ul>
